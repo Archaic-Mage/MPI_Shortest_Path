@@ -8,7 +8,7 @@
  * @ref https://snap.stanford.edu/data/
  * @ref https://www.mcs.anl.gov/research/projects/mpi/
  * 
- * Compile: mpic++ -std=c++11 -o mpi_bellman_ford mpi_bellman_ford.cpp
+ * Compile: mpic++ -o mpi_bellman_ford mpi_bellman_ford.cpp
  * Run: mpiexec -n <number of processes> ./mpi_bellman_ford <input file>, you will find the output file 'output.txt'
  */
 
@@ -172,15 +172,10 @@ void bellman_ford(int rank, int np, MPI_Comm comm, int n, int* graph, int* dist,
                 }
             }
         }
-        debug(rank, "iter = %d\n", iter);
         // wait for all processes to complete the iteration and check if there is a change
         MPI_Allreduce(MPI_IN_PLACE, &is_changed, 1, MPI_CXX_BOOL, MPI_LOR, comm);
-        debug(rank, "is_changed = %d\n", is_changed);
         if(!is_changed) {
             break;
-        }
-        for(int i = 0; i<n; i++) {
-            debug(rank, "dist[%d] = %d\n", i, local_dist[i]);
         }
         // sync the distance vector
         MPI_Allreduce(MPI_IN_PLACE, local_dist, local_n, MPI_INT, MPI_MIN, comm);

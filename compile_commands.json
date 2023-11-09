@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/mage/Documents/mpi_shortest_path",
+  "command": "mpic++  -isystem /usr/include/x86_64-linux-gnu/mpich  -o CMakeFiles/mpi_bellman_ford.dir/mpi_bellman_ford.cpp.o -c /home/mage/Documents/mpi_shortest_path/mpi_bellman_ford.cpp",
+  "file": "/home/mage/Documents/mpi_shortest_path/mpi_bellman_ford.cpp"
+}
+]

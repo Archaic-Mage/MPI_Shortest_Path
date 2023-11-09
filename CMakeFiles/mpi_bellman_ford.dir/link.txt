@@ -1,0 +1,1 @@
+mpic++ CMakeFiles/mpi_bellman_ford.dir/mpi_bellman_ford.cpp.o -o mpi_bellman_ford 
